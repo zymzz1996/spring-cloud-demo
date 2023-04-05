@@ -1,0 +1,25 @@
+server:
+  port: 8301
+spring:
+  application:
+    name: loadbalancer-service
+  cloud:
+    loadbalancer:
+      cache: # 负载均衡缓存配置
+        enabled: true # 开启缓存
+        ttl: 5s # 设置缓存时间
+        capacity: 256 # 设置缓存大小
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+service-url:
+  user-service: http://user-service
+
+rest:
+  template:
+    config: # RestTemplate调用超时配置
+      connectTimeout: 5000
+      readTimeout: 5000

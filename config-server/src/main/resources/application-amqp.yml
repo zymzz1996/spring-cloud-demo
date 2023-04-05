@@ -1,0 +1,28 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git: #配置存储配置信息的Git仓库
+          uri: https://gitee.com/meng-yuzhou/spring-cloud-config.git
+          username: 17793080912
+          password: zymmyz1996225
+          clone-on-start: true #开启启动时直接从git获取配置
+          timeout: 20
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'busrefresh'
